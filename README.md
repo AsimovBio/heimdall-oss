@@ -27,6 +27,7 @@ that those headers are signed by Google.
 ## Deployment
 
 * Update `k8s/deployment.yaml` with your audience and the location of your built image.
+    * For more information about your audience, see [this page](https://cloud.google.com/iap/docs/signed-headers-howto).
 * `kubectl apply -f k8s`
 
 Ambassador should start routing requests here before forwarding them to your backend
@@ -38,7 +39,7 @@ without a token. For example:
     curl -i localhost:8080/load-balancer-health
     => 200 OK
     curl -i localhost:8080/heimdall-health
-    => 200 OK (assuming a backend serves this)
+    => 200 OK
     curl -i localhost:8080/service-route
     => HTTP 403 forbidden, as there's no token 
 

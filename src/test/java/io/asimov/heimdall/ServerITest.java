@@ -47,7 +47,7 @@ public final class ServerITest
     }
 
     @Test
-    public void testAuth() throws IOException
+    public void testNoAuth() throws IOException
     {
         // all routes besides load-balancer-health should trigger auth, so we don't really care what the path is
         final var get = new HttpGet("http://localhost:8080/needs-auth");
@@ -55,10 +55,5 @@ public final class ServerITest
         // no token
         var response = client.execute(get);
         assertEquals(403, response.getStatusLine().getStatusCode());
-
-        // it would be possible to write a bunch of tests around the intricacies of each step of token parsing...
-        // we'd essentially have to abstract and mock the currently static parsing code within IAPAuthHandler.
-        // this is doable, but I'm not sure how great the payoff is there - getting a happy case is pretty impossible
-        // without intense infrastructure investments, and the unit test would be very "enterprisey" and fake.
     }
 }
