@@ -5,6 +5,8 @@ Heimdall is a simple gateway for authenticating requests that _should_ come from
 It rejects any request which does not have the expected IAP headers, and performs the work of verifying
 that those headers are signed by Google.
 
+For some background on using this tool with Ambassador and IAP, check out our [blog post](https://www.asimov.io/blog/2018/8/3/vpn-less-authentication-with-google-iap-k8s-and-ambassador).
+
 ## Dependencies
 
 * Java 10
